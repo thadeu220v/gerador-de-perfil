@@ -49,49 +49,49 @@
     <div id="profileOutput"></div>
 
     <script>
-        let socialCount = 0;
-        const socials = [];
+        let contadorRedesSociais = 0;
+        const redesSociais = [];
 
         // Função para adicionar uma nova rede social
         function cadastrarRede() {
-            socialCount++;
+            contadorRedesSociais++;
             const container = document.getElementById('socialContainer');
             const div = document.createElement('div');
             div.className = 'social';
-            div.id = `social${socialCount}`;
+            div.id = `redeSocial${contadorRedesSociais}`;
             div.innerHTML = `
-                <h3>Rede Social ${socialCount}</h3>
-                <label for="nomeDaRede${socialCount}">Nome da Rede Social:</label>
-                <select id="nomeDaRede${socialCount}">
+                <h3>Rede Social ${contadorRedesSociais}</h3>
+                <label for="nomeDaRede${contadorRedesSociais}">Nome da Rede Social:</label>
+                <select id="nomeDaRede${contadorRedesSociais}">
                     <option value="Facebook">Facebook</option>
                     <option value="Twitter">Twitter</option>
                     <option value="LinkedIn">LinkedIn</option>
                     <option value="Instagram">Instagram</option>
                 </select><br>
-                <label for="linkDaRede${socialCount}">Link do Perfil:</label>
-                <input type="text" id="linkDaRede${socialCount}"><br>
-                <button type="button" onclick="salvarRede(${socialCount})">Salvar</button>
-                <button type="button" onclick="editarRede(${socialCount})">Editar</button>
+                <label for="linkDaRede${contadorRedesSociais}">Link do Perfil:</label>
+                <input type="text" id="linkDaRede${contadorRedesSociais}"><br>
+                <button type="button" onclick="salvarRede(${contadorRedesSociais})">Salvar</button>
+                <button type="button" onclick="editarRede(${contadorRedesSociais})">Editar</button>
             `;
             container.appendChild(div);
         }
 
         // Função para salvar uma rede social
         function salvarRede(id) {
-            const social = {
+            const redeSocial = {
                 name: document.getElementById(`nomeDaRede${id}`).value,
                 link: document.getElementById(`linkDaRede${id}`).value
             };
-            socials[id - 1] = social;
+            redesSociais[id - 1] = redeSocial;
             alert(`Rede Social ${id} salva!`);
             gerarPerfil();
         }
 
         // Função para editar uma rede social
         function editarRede(id) {
-            const social = socials[id - 1];
-            document.getElementById(`nomeDaRede${id}`).value = social.name;
-            document.getElementById(`linkDaRede${id}`).value = social.link;
+            const redeSocial = redesSociais[id - 1];
+            document.getElementById(`nomeDaRede${id}`).value = redeSocial.name;
+            document.getElementById(`linkDaRede${id}`).value = redeSocial.link;
             alert(`Editando Rede Social ${id}`);
         }
 
@@ -111,10 +111,10 @@
                 <p>Endereço: ${document.getElementById('endereco').value}, ${document.getElementById('cidade').value}, ${document.getElementById('estado').value}, ${document.getElementById('pais').value}, ${document.getElementById('CEP').value}</p>`;
             
             output.innerHTML += '<h3>Redes Sociais</h3>';
-            if (socials.length === 0) {
+            if (redesSociais.length === 0) {
                 output.innerHTML += '<p>Não há rede social cadastrada na seção correspondente.</p>';
             } else {
-                socials.forEach((social, index) => {
+                redesSociais.forEach((social, index) => {
                     output.innerHTML += `<div>
                         <h4>Rede Social ${index + 1}</h4>
                         <p>Nome: ${social.name}</p>
