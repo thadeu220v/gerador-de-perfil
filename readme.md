@@ -1,4 +1,4 @@
-#gerador de perfiis
+# gerador de perfis
 Este é um projeto simples feito em javascript vanilla, para coletar dados de um formulário e em seguida, enviar as informações para exibição em uma tela.
 
 ## o que um dia quero que ele faça
